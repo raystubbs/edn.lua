@@ -54,7 +54,7 @@ end
 local function take_symbol (cr)
   local chars = {}
   local current = cr.current()
-  while current ~= nil and string.match(current, "[A-Za-z0-9.*+!_?$%&=<>-/]") do
+  while current ~= nil and string.match(current, "[A-Za-z0-9.*+!_?$%&=<>/-]") do
     table.insert(chars, current)
     cr.advance()
     current = cr.current()
@@ -189,7 +189,7 @@ local function parse_form (tr, opts)
 
   tr.advance()
 
-  local tk_id, tk_value = table.unpack(tk)
+  local tk_id, tk_value = (_G.unpack or table.unpack)(tk)
   if tk_id == '(' then
     return parse_list_tail(tr, opts)
   elseif tk_id == '{' then
