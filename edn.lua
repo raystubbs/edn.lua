@@ -219,6 +219,7 @@ local function parse_form (tr, opts)
     while tk ~= nil and tk[1] == '#_' do
       skip_count = skip_count + 1
       tr.advance()
+      tk = tr.current()
     end
     for _ = 1, skip_count do
       parse_form(tr, opts)
