@@ -68,6 +68,13 @@ local function read_token(cr)
   local from = cr.pos()
   if c == nil then
     return nil
+  elseif c == ";" then
+    -- Skip comment until newline
+    while c ~= nil and c ~= "\n" do
+      cr.advance()
+      c = cr.current()
+    end
+    return read_token(cr)
   elseif c == "(" or c == ")" or c == "[" or c == "]" or c == "{" or c == "}" then
     cr.advance()
     return {c, nil, from, cr.pos()}
