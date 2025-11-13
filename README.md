@@ -14,7 +14,7 @@ what I need right now; so you can expect bugs if traversing
 paths unknown.  Be ready to contribute fixes if you use this.
 
 ## Usage
-Drop the `edn.lua` file into your project.
+Drop the `lua/edn.lua` file into your project.
 ```lua
 edn = require 'edn'
 edn.decode '{:foo 1 :bar 2 :baz "meh"}' --> {foo = 1, bar = 2, baz = "meh"}
